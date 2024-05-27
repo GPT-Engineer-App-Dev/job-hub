@@ -1,38 +1,42 @@
 import { Box, Container, Flex, Heading, Text, VStack, HStack, Link, SimpleGrid, Input, Select, Button } from "@chakra-ui/react";
+import { useState } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
-const jobListings = [
-  {
-    title: "Software Engineer",
-    company: "Tech Corp",
-    location: "San Francisco, CA",
-    description: "Develop and maintain web applications."
-  },
-  {
-    title: "Product Manager",
-    company: "Business Inc.",
-    location: "New York, NY",
-    description: "Oversee product development from ideation to launch."
-  },
-  {
-    title: "UX Designer",
-    company: "Design Studio",
-    location: "Remote",
-    description: "Create user-friendly interfaces and experiences."
-  }
-];
-
 const Index = () => {
+  const [jobListings, setJobListings] = useState([
+    {
+      title: "Software Engineer",
+      company: "Tech Corp",
+      location: "San Francisco, CA",
+      description: "Develop and maintain web applications."
+    },
+    {
+      title: "Product Manager",
+      company: "Business Inc.",
+      location: "New York, NY",
+      description: "Oversee product development from ideation to launch."
+    },
+    {
+      title: "UX Designer",
+      company: "Design Studio",
+      location: "Remote",
+      description: "Create user-friendly interfaces and experiences."
+    }
+  ]);
+
+  const addJobListing = (job) => {
+    setJobListings([...jobListings, job]);
+  };
   return (
     <Container maxW="container.xl">
       {/* Navigation Bar */}
       <Flex as="nav" bg="blue.700" color="white" p={4} justifyContent="space-between" alignItems="center">
         <Heading size="md">Job Listing</Heading>
         <HStack spacing={8}>
-          <Link href="#">Home</Link>
-          <Link href="#">Jobs</Link>
-          <Link href="#">Post a Job</Link>
-          <Link href="#">Contact</Link>
+          <Link href="/">Home</Link>
+          <Link href="/jobs">Jobs</Link>
+          <Link href="/post-job">Post a Job</Link>
+          <Link href="/contact">Contact</Link>
         </HStack>
       </Flex>
 
